@@ -3,7 +3,7 @@ FROM ubuntu:14.04.2
 MAINTAINER ZhangQidong, 345804606@qq.com
 
 #Time zone control
-RUN cp  /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
 
 # Update the packages
 RUN apt-get update 
@@ -39,4 +39,4 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 CMD mesos-master --help
 
-EXPOSE 6060
+EXPOSE 5050

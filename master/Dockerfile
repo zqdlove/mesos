@@ -22,15 +22,15 @@ RUN apt-get -y install build-essential python-dev libcurl4-nss-dev \
     libsasl2-dev libsasl2-modules maven libapr1-dev libsvn-dev
 
 # Download Configure Build
-RUN wget wget http://www.apache.org/dist/mesos/0.28.2/mesos-0.28.2.tar.gz && \
-    tar -zxf mesos-0.28.2.tar.gz && \
-    cd mesos-0.28.2 && \
+RUN wget http://www.apache.org/dist/mesos/1.1.0/mesos-1.1.0.tar.gz && \
+    tar -zxf mesos-1.1.0.tar.gz && \
+    cd mesos-1.1.0 && \
     mkdir build && cd build && \
     ../configure && \
     make -j 30 && \
 #    make check && \
     make install && \
-    cd / && rm -rf /mesos-0.28.2 mesos-0.28.2.tar.gz
+    cd / && rm -rf /mesos-1.1.0 mesos-1.1.0.tar.gz
 
 RUN echo "include /usr/local/lib" >> /etc/ld.so.conf && \
     /sbin/ldconfig -v

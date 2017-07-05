@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER ZhangQidong, 345804606@qq.com
 
 #Time zone control
-COPY ./localtime /etc/localtime
+#COPY ./localtime /etc/localtime
 
 # Update the packages
 RUN apt-get update
@@ -23,14 +23,14 @@ RUN apt-get -y install build-essential python-dev python-six \
     maven libapr1-dev libsvn-dev zlib1g-dev
 
 # Download Configure Build
-#RUN wget http://www.apache.org/dist/mesos/1.3.0/mesos-1.3.0.tar.gz
-     tar -zxf mesos-1.3.0.tar.gz && \
-     cd mesos-1.3.0 && \
-     mkdir build && cd build && \
-     ../configure && \
-     make && \
-     make check && \
-     make install && \
+RUN wget http://www.apache.org/dist/mesos/1.3.0/mesos-1.3.0.tar.gz
+    tar -zxf mesos-1.3.0.tar.gz && \
+    cd mesos-1.3.0 && \
+    mkdir build && cd build && \
+    ../configure && \
+    make && \
+    make check && \
+    make install && \
     cd / && rm -rf /mesos-1.3.0 mesos-1.3.0.tar.gz
 
 RUN echo "include /usr/local/lib" >> /etc/ld.so.conf && \
